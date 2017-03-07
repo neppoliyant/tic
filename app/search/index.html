@@ -1,0 +1,87 @@
+</br>
+<style>
+input[type=text] {
+    width: 100%;
+    height: 35px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('images/searchicon.png');
+    background-position: 5px 5px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+}
+</style>
+
+<div class="container">
+  <div class="form-group">
+    <input type="text" class="right" name="search" placeholder="find people, journal" ng-model="vm.search.text" ng-change="vm.searchEvent()" />
+  </div>
+
+
+<div class="form-group">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Search Journal : {{vm.search.text}} Results {{vm.searchResults.length}}</a></h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+          <div class="col-md-3">
+            <ul id="Menu">
+              <li class="list-unstyled" ng-repeat="item in vm.searchResults" ng-model="vm.itemSelected"
+                  ng-click="vm.onCategoryChange(item)">
+                  <div>
+                      <a href=""><label class="col-form-label">{{item.journalName}}</label></a>
+                  </div>
+              </li>
+            </ul>
+          </div>
+    </div>
+  </div>
+</div>
+
+<br/>
+
+<div class="form-group">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Search Users : {{vm.search.text}} Results {{vm.searchUserResults.length}}</a></h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+          <div>
+            <ul class="list-group">
+              <li class="list-group-item" ng-repeat="user in vm.searchUserResults" ng-model="vm.itemSelected" ng-click="vm.onCategoryChange(user)">
+                <div class="row" >
+                <div class="col-md-2">
+                    <img src="images/pic_mountain.jpg" alt="Mountain View" style="width:150px;height:150px;">
+                </div>
+                <div class="col-md-7">
+                    <label class="col-form-label"><h4>{{user.littleBitOfWork}}</h4></label></br>
+                    <label class="col-form-label">Research Interest: {{user.researchInterest}}</label></br>
+                    <label class="col-form-label">Research Institue: {{user.researchInstitue}}</label></br>
+                    <label class="col-form-label">Universities Attend: {{user.universitiesAttend}}</label>
+                </div>
+                <div class="col-md-3">
+                    <label class="col-form-label">Name: {{user.firstName}} {{user.lastName}}</label></br>
+                    <label class="col-form-label">userId: {{user.username}}</label></br>
+                    <div ng-if="user.addRequest && user.addRequest != 'Added'">
+                        <button type="button" class="btn btn-default disabled">{{user.addRequest}}</button>
+                    </div>
+                    <div ng-if="!user.addRequest">
+                        <button type="button" class="btn btn-default" ng-click="vm.addrequest(user)">Send Request</button>
+                    </div>
+                </div>
+              </row>
+              </li>
+            </ul>
+          </div>
+    </div>
+  </div>
+</div>
+
+
+
+</div>

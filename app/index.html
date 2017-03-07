@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>TIC</title>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="app-content/app.css" rel="stylesheet" />
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="function.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+	  <link rel="stylesheet" type="text/css" href="css/menu.css">
+    <script src="//static.opentok.com/v2/js/opentok.min.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+  <!-- header -->
+  <div id="wrap">
+    <header>
+      <div class="relative">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a class="logo"><img src="images/tic.png" alt="TIC"></a>
+        <a id="menu-toggle" class="button dark" href="#"><i class="icon-reorder"></i></a>
+        <nav id="navigation">
+          <ul id="main-menu">
+            <li class="current-menu-item" ng-class="{active: activeTab === 'home'}"><a ui-sref="home">Home</a></li>
+            <li ng-class="{active: activeTab === 'session'}"><a ui-sref="session">Session</a></li>
+            <li class="parent">
+              <a href="">Features</a>
+              <ul class="sub-menu">
+                <li><a ui-sref="search"><i class="icon-search"></i> Find People</a></li>
+                <li><a ui-sref="history"><i class="icon-time"></i> History</a></li>
+                <li><a ><i class="icon-calendar"></i> Calendar</a></li>
+              </ul>
+            </li>
+            <li ng-class="{active: activeTab === 'account'}"><a ui-sref="account">Portfolio</a></li>
+            <li class="parent">
+              <a >Blog</a>
+            </li>
+            <li><a target="_self"><i class="icon-twitter-sign"></i></a></li>
+            <li><a href="/login" target="_self">Logout</a></li>
+          </ul>
+        </nav>
+        <div class="clear"></div>
+      </div>
+    </header>
+  </div>
+
+  <div class="container">
+    <div class="flash-message" ng-if="flash">
+        <div class="{{'alert alert-' + flash.type}}" ng-bind="flash.message"></div>
+    </div>
+      <!-- main -->
+      <main ui-view></main>
+
+      <!-- footer -->
+      <footer></footer>
+
+  </div>
+
+    <!-- external scripts -->
+    <script src="//static.opentok.com/v2/js/opentok.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../node_modules/jquery/dist/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../node_modules/angular/angular.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../node_modules/opentok-layout-js/opentok-layout.js" type="text/javascript" charset="utf-8"></script>
+    <script src="opentok-angular.js" type="text/javascript" charset="utf-8"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+    <link rel="stylesheet" href="../node_modules/ng-dialog/css/ngDialog.min.css">
+    <link rel="stylesheet" href="../node_modules/ng-dialog/css/ngDialog-theme-default.min.css">
+    <script src="../node_modules/ng-dialog/js/ngDialog.js"></script>
+
+
+    <!-- application scripts -->
+    <script src="app.js"></script>
+    <script src="app-services/user.service.js"></script>
+    <script src="app-services/flash.service.js"></script>
+    <script src="app-services/journal.service.js"></script>
+    <script src="app-services/sharedProperties.js"></script>
+    <script src="home/index.controller.js"></script>
+    <script src="account/index.controller.js"></script>
+    <script src="journal/index.controller.js"></script>
+    <script src="history/index.controller.js"></script>
+    <script src="session/index.controller.js"></script>
+    <script src="search/index.controller.js"></script>
+</body>
+</html>

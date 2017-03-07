@@ -1,0 +1,71 @@
+<style>
+input[type=text] {
+    width: 180px;
+    height: 35px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('images/searchicon.png');
+    background-position: 5px 5px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+    width: 50%;
+}
+</style>
+
+﻿<h1>Hi {{vm.user.firstName}}!! <input type="text" class="right" name="search" placeholder="find people, journal" ng-model="vm.search.text" ng-click="vm.searchEvent()" ></h1>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Up Coming Presentation <a class="glyphicon glyphicon-plus right" ng-click="vm.createJournal()"></a></h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-7">
+        <ul id="Menu">
+          <li class="list-unstyled" ng-repeat="item in vm.journalData" ng-model="vm.itemSelected"
+              ng-click="vm.onCategoryChange(item)">
+              <label class="col-form-label">{{item.journalName}}</label>
+              <button type="button" class="btn btn-default" ng-click="vm.startSession(item)">Start</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">You might want to check out</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-7">
+        <ul id="Menu">
+          <li class="list-unstyled" ng-repeat="item in vm.topData" ng-model="vm.itemSelected"
+              ng-click="vm.onCategoryChange(item)">
+              <label class="col-form-label">{{item.journalName}}</label>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Popular JCP's</h3>
+  </div>
+  <div class="panel-body">
+    1. Drop down with selected valued list top 5 JCPs </br>
+    2. SETI Search for extra terretrial.</br>
+  </div>
+</div>

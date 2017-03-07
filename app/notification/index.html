@@ -1,0 +1,129 @@
+<h3>Journals</h3>
+<br/>
+
+<style type="text/css">
+
+        #Menu
+        {
+            padding:0;
+            margin:0;
+            list-style-type:none;
+            font-size:13px;
+            color:#717171;
+            width:100%;
+        }
+
+        #Menu li
+        {
+            border-bottom:1px solid #eeeeee;
+            padding:7px 10px 7px 10px;
+        }
+
+        #Menu li:hover
+        {
+            color:White;
+            background-color:#8FBC8F;
+        }
+
+        #Menu a:link
+        {
+            color:#717171;
+            text-decoration:none;
+        }
+
+        #Menu a:hover
+        {
+            color:White;
+        }
+    </style>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3">
+    <ul id="Menu">
+      <li class="list-unstyled" ng-repeat="item in vm.GetAllJournal" ng-model="vm.itemSelected"
+          ng-click="vm.onCategoryChange(item)"><label class="col-form-label">{{item.journalName}}</label>
+      </li>
+    </ul>
+    </div>
+    <div class="col-md-9">
+
+
+      <form method="post">
+          <div class="form-group row">
+            <label for="journalName" class="col-sm-2 col-form-label">Journal name</label>
+            <div class="col-sm-10">
+              <input type="text" id="journalName" class="form-control" ng-model="vm.journal.journalName" required placeholder="Journal Name"/>
+            </div>
+          </div>
+
+          <div class="form-group row">
+              <label for="authors" class="col-sm-2 col-form-label">Article Authors</label>
+              <div class="col-sm-10">
+                <input type="text" id="authors" class="form-control" ng-model="vm.journal.authors" required placeholder="Article Authors"/>
+              </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="fieldOfStudy" class="col-sm-2 col-form-label">Field of Study</label>
+            <div class="col-sm-10">
+              <select class="form-control" ng-model="vm.journal.fieldOfStudy" ng-options="x for x in vm.fieldOfStudyData"></select>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="keyWords" class="col-sm-2 col-form-label">Tags</label>
+            <div class="col-sm-10">
+              <input type="text" id="keyWords" ng-model="vm.journal.keyWords" class="form-control" required />
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="description" class="col-sm-2 col-form-label">Description</label>
+            <div class="col-sm-10">
+              <input type="text" id="description" ng-model="vm.journal.description" class="form-control" required />
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="date" class="col-sm-2 col-form-label">Date/Time of Presentation</label>
+            <div class="col-sm-10">
+              <input type="text" id="date" class="form-control" ng-model="vm.journal.date" required />
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="journaldoc" class="col-sm-2 col-form-label">Upload Document</label>
+            <div class="col-sm-10">
+              <input type="file" id="journaldoc" ng-model="vm.journal.journaldoc" class="form-control" />
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="attendies" class="col-sm-2 col-form-label">Attendies</label>
+            <div class="col-sm-10">
+                  <div class="radio">
+                      <label>
+                          <input type="radio" name="invite" value="Invite Only" ng-model="vm.journal.invite">
+                          Invite Only
+                      </label>
+                          <input type="text" ng-show="vm.journal.invite == 'Invite Only'" class="form-control" name="inviteEmail" ng-model="vm.journal.inviteEmail" placeholder="Email seperated by comma(',')"  />
+                  </div>
+                  <div class="radio">
+                      <label>
+                          <input type="radio" name="invite" value="General" ng-model="vm.journal.invite">
+                          General
+                      </label>
+                  </div>
+            </div>
+          </div>
+
+          <div class="form-group row right">
+              <button class="btn btn-primary" ng-click="vm.updateJournal(vm.journal)">Update</button>
+              <button class="btn btn-danger" ng-click="vm.deleteJournal(vm.journal)">Delete</button>
+          </div>
+      </form>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,81 @@
+<h3>Create Journal</h3>
+<div class="container col-sm-8 col-sm-offset-2">
+    <form method="post">
+        <div class="form-group row">
+          <label for="journalName" class="col-sm-2 col-form-label">Journal name</label>
+          <div class="col-sm-10">
+            <input type="text" id="journalName" class="form-control" ng-model="vm.journal.journalName" required placeholder="Journal Name"/>
+          </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="authors" class="col-sm-2 col-form-label">Article Authors</label>
+            <div class="col-sm-10">
+              <input type="text" id="authors" class="form-control" ng-model="vm.journal.authors" required placeholder="Article Authors"/>
+            </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="fieldOfStudy" class="col-sm-2 col-form-label">Field of Study</label>
+          <div class="col-sm-10">
+            <select class="form-control" ng-model="vm.journal.fieldOfStudy" ng-options="x for x in vm.fieldOfStudyData"></select>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="keyWords" class="col-sm-2 col-form-label">Tags</label>
+          <div class="col-sm-10">
+            <input type="text" id="keyWords" ng-model="vm.journal.keyWords" class="form-control" required />
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="description" class="col-sm-2 col-form-label">Description</label>
+          <div class="col-sm-10">
+            <input type="text" id="description" ng-model="vm.journal.description" class="form-control" required />
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="date" class="col-sm-2 col-form-label">Date/Time of Presentation</label>
+          <div class="col-sm-10">
+            <select class="form-control" ng-model="vm.journal.month" style="width:100px; float:left;" ng-options="x.name for x in vm.month" placeholder="Month"></select>
+            <input type="text" id="day" class="form-control" ng-model="vm.journal.day" style="width:100px; float:left; padding-left:5px;" required placeholder="Day" />
+            <input type="text" id="year" class="form-control" ng-model="vm.journal.year" style="width:100px; float:left; padding-left:5px;" required placeholder="Year" />
+            <select class="form-control" ng-model="vm.journal.time" style="width:100px; float:left; padding-left:5px;" ng-options="x for x in vm.time" placeholder="Time"></select>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="journaldoc" class="col-sm-2 col-form-label">Upload Document</label>
+          <div class="col-sm-10">
+            <input type="file" id="journaldoc" ng-model="vm.journal.journaldoc" class="form-control" />
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="attendies" class="col-sm-2 col-form-label">Attendies</label>
+          <div class="col-sm-10">
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="invite" value="Invite Only" ng-model="vm.journal.invite">
+                        Invite Only
+                    </label>
+                        <input type="text" ng-show="vm.journal.invite == 'Invite Only'" class="form-control" name="inviteEmail" ng-model="vm.journal.inviteEmail" placeholder="Email seperated by comma(',')"  />
+                </div>
+
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="invite" value="General" ng-model="vm.journal.invite" ng-change="vm.onInviteOnly(false)">
+                        General
+                    </label>
+                </div>
+          </div>
+        </div>
+
+        <div class="form-group row right">
+            <button class="btn btn-primary" ng-click="vm.createJournal()">Create</button>
+            <button class="btn btn-danger" ng-click="vm.cancel()">Cancel</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,9 @@
+﻿{
+    "connectionString": "couchbase://159.203.190.93/",
+    "apiUrl": "https://159.203.190.93:3000/api",
+    "secret": "80c1963d978b4ab7b09a4863375ca970",
+    "openTok": {
+      "apiKey": "45738212",
+      "apiSecret": "bd3310baff346f0db4c02d8630ab21f7e0718943"
+    }
+}
